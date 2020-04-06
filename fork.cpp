@@ -41,7 +41,7 @@ int main(){
     //letter to search for
     char searchLetter;
     //array filled with random upper case letters
-    string* rawBytes;
+    string* rawBytes = NULL;
     string loop = "---Not Found: Infinite loop--";
 
     bool run = true;
@@ -86,6 +86,7 @@ int main(){
 
             //deallocating memory
             delete rawBytes;
+            rawBytes = NULL;
             exit(0);
         }
     }
