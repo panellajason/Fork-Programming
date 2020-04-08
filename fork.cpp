@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <algorithm>
+#include <sys/wait.h>
 
 using namespace std;
 
@@ -46,6 +47,8 @@ int main(){
 
     bool run = true;
     while (run) {
+        //placed here so the code prints in a logical manner
+        wait(NULL);
 
         cout << "\nEnter the size of the array. Type -1 to exit." << endl;
         cin >> size;
@@ -58,7 +61,7 @@ int main(){
         cin >> searchLetter;
         searchLetter = toupper(searchLetter);
 
-        cout << "Starting search..." << endl;
+        cout << "\nStarting search with array size " << size << "..." << endl;
 
         int child = fork();
         if (child == 0){ //in child
@@ -87,6 +90,7 @@ int main(){
             //deallocating memory
             delete rawBytes;
             rawBytes = NULL;
+            
             exit(0);
         }
     }
